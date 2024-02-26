@@ -1,0 +1,18 @@
+.button{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    padding-top: 20%;
+    transition: background-color 1s,  height 1s, translate 2s, rotate 2s ;
+}
+
+.button:hover{
+    background-color: aqua;
+    height: 300px;
+    translate: 1000%;
+    rotate: 180deg;
+}

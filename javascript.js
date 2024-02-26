@@ -5,8 +5,25 @@ function generateRandomTime(maxTime)
     return randomNumber;
 }
 
+function getNumOfRounds()
+{
+    const roundInput = document.getElementById("select-rounds");
+    let numOfRounds = 0;
+
+    roundInput.addEventListener("input", function (e)
+    {
+        numOfRounds = parseInt(this.value);
+        console.log(numOfRounds);
+    })
+
+    
+}
+
+getNumOfRounds();
+
 function newRound()
 {
+
     currentRound += 1;
 
     const maxTime = 5;
@@ -46,5 +63,5 @@ function reset()
 let maxRounds = 5;
 let currentRound = 0;
 
-newRound();
+///newRound();
 
