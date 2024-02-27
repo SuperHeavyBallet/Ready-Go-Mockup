@@ -1,5 +1,5 @@
-const roundInput = document.getElementById("select-rounds");
-const roundDisplay = document.getElementById("round-number");
+const roundInput = document.getElementById("round-number");
+const roundDisplay = document.getElementById("round-display");
 const timeDisplay = document.getElementById("time-display");
 const waitGoDisplay = document.getElementById("wait-go");
 
@@ -60,16 +60,6 @@ function generateRandomSound()
     return randomSound;
 }
 
-function getNumOfRounds()
-{
-    
-
-    roundInput.addEventListener("input", function (e)
-    {
-        numOfRounds = parseInt(this.value);
-        console.log(numOfRounds);
-    });
-}
 
 
 
