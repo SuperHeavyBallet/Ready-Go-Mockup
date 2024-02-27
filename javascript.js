@@ -48,7 +48,7 @@ const minTime = 1000;
 function generateRandomTime(maxTime)
 {
     const randomNumber = Math.floor(Math.random() * maxTime);
-    timeDisplay.textContent = `Time: ${randomNumber} Seconds`;
+    
     return randomNumber;
 }
 
@@ -86,13 +86,16 @@ function newRound()
     roundDisplay.textContent = `Round: ${currentRound}`;
 
     // Generate random round time
-    const randomWaitTime = minTime + (generateRandomTime(maxTime) * 1000);
+    const randomWaitTime = generateRandomTime(maxTime);
+    const finalTime = (randomWaitTime * 1000) + minTime;
+
+    timeDisplay.textContent = `Time: ${finalTime / 1000} Seconds`;
 
     // Proceed based on random time
     setTimeout(() => 
     {
         readyGo();
-    }, randomWaitTime);
+    }, finalTime);
 }
 
 function readyGo()
