@@ -1,4 +1,5 @@
 const roundInput = document.getElementById("round-number");
+const selectedNumOfRounds = document.getElementById("selected-num-of-rounds");
 const roundDisplay = document.getElementById("round-display");
 const timeDisplay = document.getElementById("time-display");
 const waitGoDisplay = document.getElementById("wait-go");
@@ -6,7 +7,8 @@ const waitGoDisplay = document.getElementById("wait-go");
 const startButton = document.getElementById("start-button");
 let startButtonClicked = false;
 
-let numOfRounds = 0;
+let numOfRounds = 1;
+
 
 const readyGo00 = new Audio("audio/ReadyGo/Ready_Go_00.mp3");
 const readyGo01 = new Audio("audio/ReadyGo/Ready_Go_01.mp3");
@@ -21,6 +23,13 @@ const readyGo09 = new Audio("audio/ReadyGo/Ready_Go_09.mp3");
 const readyGo10 = new Audio("audio/ReadyGo/Ready_Go_10.mp3");
 const readyGo11 = new Audio("audio/ReadyGo/Ready_Go_11.mp3");
 const readyGo12 = new Audio("audio/ReadyGo/Ready_Go_12.mp3");
+
+roundInput.addEventListener('change', function()
+{
+    numOfRounds = this.value;
+    selectedNumOfRounds.textContent = `Rounds: ${numOfRounds}`;
+    
+})
 
 const readyGoAudio = [
     readyGo00,
@@ -39,10 +48,10 @@ const readyGoAudio = [
 ];
 
 let maxRounds = 5;
-let currentRound = 0;
+let currentRound = 1;
 
 const maxTime = 5;
-const minTime = 1000;
+const minTime = 2000;
 
 
 
@@ -71,7 +80,7 @@ function newRound()
     waitGoDisplay.classList.add("green");
 
     // Increment Each ROund on each loop
-    currentRound += 1;
+    
 
     // Display current round number
     roundDisplay.textContent = `Round: ${currentRound}`;
@@ -108,15 +117,17 @@ function beep()
 
 function reset()
 {   
-    if (currentRound < maxRounds)
-    {/*
+    if (currentRound < numOfRounds)
+    {
         setTimeout(() =>
         {
-            //newRound();
-        }, 1000);*/
+            currentRound += 1;
+            newRound();
+        }, 1000);
     }
     else
     {
+        currentRound = 1;
         console.log("END");
     }
 }
