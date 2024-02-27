@@ -4,6 +4,7 @@ const timeDisplay = document.getElementById("time-display");
 const waitGoDisplay = document.getElementById("wait-go");
 
 const startButton = document.getElementById("start-button");
+let startButtonClicked = false;
 
 let numOfRounds = 0;
 
@@ -112,16 +113,17 @@ function beep()
     const sound = generateRandomSound();
     sound.play();
     startButton.textContent = "START";
+    startButtonClicked = false;
 }
 
 function reset()
 {   
     if (currentRound < maxRounds)
-    {
+    {/*
         setTimeout(() =>
         {
             //newRound();
-        }, 1000);
+        }, 1000);*/
     }
     else
     {
@@ -131,12 +133,15 @@ function reset()
 
 
 
-//getNumOfRounds();
-//newRound();
-
 startButton.addEventListener("click", () =>
 {
-    newRound();
-})
+    if (!startButtonClicked)
+    {
+        startButtonClicked = true;
+        newRound();
+    }
+});
+
+
 
 
