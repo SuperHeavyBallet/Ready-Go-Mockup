@@ -76,6 +76,8 @@ function newRound()
 {
     startButton.textContent = 'WAIT';
     waitGoDisplay.textContent = "WAIT";
+    waitGoDisplay.classList.remove("red");
+    waitGoDisplay.classList.add("green");
 
     // Increment Each ROund on each loop
     currentRound += 1;
@@ -97,6 +99,8 @@ function readyGo()
 {
     beep();
     waitGoDisplay.textContent = "READY GO!";
+    waitGoDisplay.classList.remove("green");
+    waitGoDisplay.classList.add("red");
     reset();
 }
 

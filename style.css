@@ -1,18 +1,24 @@
-.button{
+body{
     display: flex;
-    flex-direction: row;
-    background-color: red;
-    width: 100px;
-    height: 100px;
-    color: white;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5vw;
+    margin: 5vw;
     text-align: center;
-    padding-top: 20%;
-    transition: background-color 1s,  height 1s, translate 2s, rotate 2s ;
 }
 
-.button:hover{
-    background-color: aqua;
-    height: 300px;
-    translate: 1000%;
-    rotate: 180deg;
+.start-button{
+    padding: 8vw;
+    margin: 3vw;
+    font-size: xx-large;
+}
+
+.red{
+    background-color: red;
+    color: white;
+}
+
+.green{
+    background-color: green;
+    color: white;
 }
