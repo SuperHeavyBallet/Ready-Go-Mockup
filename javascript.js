@@ -1,3 +1,6 @@
+const intervalTypeInput = document.getElementById("interval-type");
+const timeIntervalInput = document.getElementById("fixed-time");
+
 const roundInput = document.getElementById("round-number");
 const selectedNumOfRounds = document.getElementById("selected-num-of-rounds");
 const roundDisplay = document.getElementById("round-display");
@@ -23,6 +26,21 @@ const readyGo09 = new Audio("audio/ReadyGo/Ready_Go_09.mp3");
 const readyGo10 = new Audio("audio/ReadyGo/Ready_Go_10.mp3");
 const readyGo11 = new Audio("audio/ReadyGo/Ready_Go_11.mp3");
 const readyGo12 = new Audio("audio/ReadyGo/Ready_Go_12.mp3");
+
+intervalTypeInput.addEventListener('change', function()
+{
+   //console.log("Type: " , this.value);
+
+
+    if (this.value === "fixed")
+    {
+        console.log("Fixed");
+    }
+    else if (this.value === "random")
+    {
+        console.log("Random");
+    }
+})
 
 roundInput.addEventListener('change', function()
 {
@@ -85,9 +103,21 @@ function newRound()
     // Display current round number
     roundDisplay.textContent = `Round: ${currentRound}`;
 
-    // Generate random round time
-    const randomWaitTime = generateRandomTime(maxTime);
-    const finalTime = (randomWaitTime * 1000) + minTime;
+    let finalTime;
+
+    if (intervalTypeInput.value === "random")
+    {
+        // Generate random round time
+        const randomWaitTime = generateRandomTime(maxTime);
+        finalTime = (randomWaitTime * 1000) + minTime;
+    }
+    else if (intervalTypeInput.value === "fixed")
+    {
+        console.log("FIXED!!");
+        const fixedWaitTime = timeIntervalInput.value;
+        finalTime = (fixedWaitTime * 1000) + minTime;
+        console.log(finalTime);
+    }
 
     timeDisplay.textContent = `Time: ${finalTime / 1000} Seconds`;
 

@@ -9,8 +9,29 @@
     <link rel="icon" type="image/x-icon" href="#">
 </head>
 <body>
-   <label for="round-number">How Many Rounds?</label>
-   <select name="round-number" id="round-number">
+
+    <label for="interval-type">Interval Type:</label>
+    <select name="interval-type" class="interval-type" id="interval-type">
+        <option value="fixed">Fixed Interval</option>
+        <option value="random">Random Interval</option>
+    </select>
+
+    <label for="fixed-time">Time Interval:</label>
+    <select name="fixed-time" class="fixed-time" id="fixed-time">
+        <option value="1">1 Second</option>
+        <option value="2">2 Seconds</option>
+        <option value="3">3 Seconds</option>
+        <option value="4">4 Seconds</option>
+        <option value="5">5 Seconds</option>
+        <option value="6">6 Seconds</option>
+        <option value="7">7 Seconds</option>
+        <option value="8">8 Seconds</option>
+        <option value="9">9 Seconds</option>
+        <option value="10">10 Seconds</option>
+    </select>
+    
+   <label for="round-number">Number of Rounds:</label>
+   <select name="round-number" id="round-number" class="round-number">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
