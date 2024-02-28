@@ -83,7 +83,7 @@ body{
     min-width: 300px;
     max-width: 400px;
     padding: 8vh;
-    margin: 3vw;
+    margin: 3vw 3vw 1vw 3vw;
     font-size: xx-large;
     font-weight: bolder;
     background-color: orange;
@@ -119,4 +119,12 @@ body{
 
 .hidden{
     display: none;
+}
+
+.invisible{
+    opacity: 0%;
+}
+
+.visible{
+    opacity: 100%;
 }

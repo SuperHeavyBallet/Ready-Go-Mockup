@@ -9,6 +9,7 @@ const timeDisplay = document.getElementById("time-display");
 //const waitGoDisplay = document.getElementById("wait-go");
 
 const startButton = document.getElementById("start-button");
+const clickPrompt = document.getElementById("click-prompt");
 let startButtonClicked = false;
 
 let numOfRounds = 1;
@@ -80,6 +81,7 @@ startButton.addEventListener("click", () =>
     if (!startButtonClicked)
     {
         startButtonClicked = true;
+        clickPrompt.classList.add("invisible");
         newRound();
     }
 });
@@ -186,6 +188,8 @@ function waitingButtonState()
     startButton.classList.remove("blue");
 
     startButton.textContent = "START";
+
+    clickPrompt.classList.remove("invisible");
 }
 
 function countdownButtonState()
@@ -199,6 +203,8 @@ function countdownButtonState()
     //waitGoDisplay.textContent = "WAIT";
     //waitGoDisplay.classList.remove("red");
     //waitGoDisplay.classList.add("green");
+
+    clickPrompt.classList.add("invisible");
 
     roundDisplay.textContent = `Round: ${currentRound}`;
 }
