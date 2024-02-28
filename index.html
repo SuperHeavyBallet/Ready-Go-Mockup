@@ -8,41 +8,55 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="#">
 </head>
-<body>
 
+<header>
+    <div class="top-banner-container">
+        <h3>ARMWRESTLING ACADEMIA</h3>
+    </div>
+</header>
+<body>
+    <div class="ready-go-container">
+        <div class="input-area">
+
+      
     <label for="interval-type">Interval Type:</label>
     <select name="interval-type" class="interval-type" id="interval-type">
         <option value="fixed">Fixed Interval</option>
         <option value="random">Random Interval</option>
     </select>
 
-    <label for="fixed-time">Time Interval:</label>
-    <select name="fixed-time" class="fixed-time" id="fixed-time">
-        <option value="1">1 Second</option>
-        <option value="2">2 Seconds</option>
-        <option value="3">3 Seconds</option>
-        <option value="4">4 Seconds</option>
-        <option value="5">5 Seconds</option>
-        <option value="6">6 Seconds</option>
-        <option value="7">7 Seconds</option>
-        <option value="8">8 Seconds</option>
-        <option value="9">9 Seconds</option>
-        <option value="10">10 Seconds</option>
-    </select>
     
-   <label for="round-number">Number of Rounds:</label>
-   <select name="round-number" id="round-number" class="round-number">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-   </select>
+        <label for="fixed-time" class="fixed-time-label" id="fixed-time-label">Time Interval:</label>
+        <select name="fixed-time" class="fixed-time" id="fixed-time">
+            <option value="1">1 Second</option>
+            <option value="2">2 Seconds</option>
+            <option value="3">3 Seconds</option>
+            <option value="4">4 Seconds</option>
+            <option value="5">5 Seconds</option>
+            <option value="6">6 Seconds</option>
+            <option value="7">7 Seconds</option>
+            <option value="8">8 Seconds</option>
+            <option value="9">9 Seconds</option>
+            <option value="10">10 Seconds</option>
+        </select>
+
+    <label for="round-number">Number of Rounds:</label>
+    <select name="round-number" id="round-number" class="round-number">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    </div>
+
+    <div class="display-area">
    <div class="selected-num-of-rounds" id="selected-num-of-rounds">Rounds: 1</div>
 
    
@@ -52,6 +66,8 @@
    <div id="wait-go" class="wait-go">WAIT</div>
 
    <button id="start-button" class="start-button">START</button>
+</div>
+</div>
     
 </body>
 </html>

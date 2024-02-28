@@ -1,16 +1,63 @@
-body{
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.top-banner-container{
+    border-bottom: 1px solid orange;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 5vw;
-    margin: 5vw;
     text-align: center;
+    
 }
+
+.top-banner-container h3{
+    color: white;
+    padding:2vh;
+    font-weight: bolder;
+}
+
+body{
+
+
+    padding: 0;
+    margin: 0;
+
+    background-color: black;
+}
+
+.ready-go-container{
+    
+    margin: 3vw;
+    padding: 3vw;
+    justify-content: center;
+    text-align: center;
+ 
+}
+
+.input-area{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-bottom: 1px solid white;
+    padding-bottom: 3vh;
+}
+
+.display-area{
+    color: white;
+    border-bottom: 1px solid white;
+    padding: 3vh;
+}
+
+
 
 .start-button{
     padding: 8vw;
     margin: 3vw;
     font-size: xx-large;
+    background-color: orange;
 }
 
 .red{
@@ -21,4 +68,8 @@ body{
 .green{
     background-color: green;
     color: white;
+}
+
+.hidden{
+    display: none;
 }

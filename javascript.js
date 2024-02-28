@@ -1,4 +1,5 @@
 const intervalTypeInput = document.getElementById("interval-type");
+const timeIntervalLabel = document.getElementById("fixed-time-label")
 const timeIntervalInput = document.getElementById("fixed-time");
 
 const roundInput = document.getElementById("round-number");
@@ -35,10 +36,14 @@ intervalTypeInput.addEventListener('change', function()
     if (this.value === "fixed")
     {
         console.log("Fixed");
+        timeIntervalLabel.classList.remove("hidden");
+        timeIntervalInput.classList.remove("hidden");
     }
     else if (this.value === "random")
     {
         console.log("Random");
+        timeIntervalLabel.classList.add("hidden");
+        timeIntervalInput.classList.add("hidden");
     }
 })
 
