@@ -6,14 +6,19 @@ const roundInput = document.getElementById("round-number");
 const selectedNumOfRounds = document.getElementById("selected-num-of-rounds");
 const roundDisplay = document.getElementById("round-display");
 const timeDisplay = document.getElementById("time-display");
-const waitGoDisplay = document.getElementById("wait-go");
+//const waitGoDisplay = document.getElementById("wait-go");
 
 const startButton = document.getElementById("start-button");
 let startButtonClicked = false;
 
 let numOfRounds = 1;
+let maxRounds = 5;
+let currentRound = 1;
 
+const maxTime = 5;
+const minTime = 2000;
 
+//#region Ready Go Audio Clips
 const readyGo00 = new Audio("audio/ReadyGo/Ready_Go_00.mp3");
 const readyGo01 = new Audio("audio/ReadyGo/Ready_Go_01.mp3");
 const readyGo02 = new Audio("audio/ReadyGo/Ready_Go_02.mp3");
@@ -27,32 +32,6 @@ const readyGo09 = new Audio("audio/ReadyGo/Ready_Go_09.mp3");
 const readyGo10 = new Audio("audio/ReadyGo/Ready_Go_10.mp3");
 const readyGo11 = new Audio("audio/ReadyGo/Ready_Go_11.mp3");
 const readyGo12 = new Audio("audio/ReadyGo/Ready_Go_12.mp3");
-
-intervalTypeInput.addEventListener('change', function()
-{
-   //console.log("Type: " , this.value);
-
-
-    if (this.value === "fixed")
-    {
-        console.log("Fixed");
-        timeIntervalLabel.classList.remove("hidden");
-        timeIntervalInput.classList.remove("hidden");
-    }
-    else if (this.value === "random")
-    {
-        console.log("Random");
-        timeIntervalLabel.classList.add("hidden");
-        timeIntervalInput.classList.add("hidden");
-    }
-})
-
-roundInput.addEventListener('change', function()
-{
-    numOfRounds = this.value;
-    selectedNumOfRounds.textContent = `Rounds: ${numOfRounds}`;
-    
-})
 
 const readyGoAudio = [
     readyGo00,
@@ -69,14 +48,44 @@ const readyGoAudio = [
     readyGo11,
     readyGo12,
 ];
+//#endregion
 
-let maxRounds = 5;
-let currentRound = 1;
+//#region Event Listeners
+intervalTypeInput.addEventListener('change', function()
+{
+    reset("hard-reset");
 
-const maxTime = 5;
-const minTime = 2000;
+    if (this.value === "fixed")
+    {
+        timeIntervalLabel.classList.remove("hidden");
+        timeIntervalInput.classList.remove("hidden");
+    }
+    else if (this.value === "random")
+    {
+        timeIntervalLabel.classList.add("hidden");
+        timeIntervalInput.classList.add("hidden");
+    }
+})
 
+roundInput.addEventListener('change', function()
+{
+    reset("hard-reset");
+    numOfRounds = this.value;
+    selectedNumOfRounds.textContent = `Rounds: ${numOfRounds}`;
+    
+})
 
+startButton.addEventListener("click", () =>
+{
+    if (!startButtonClicked)
+    {
+        startButtonClicked = true;
+        newRound();
+    }
+});
+//#endregion
+
+//#region Random Generators
 
 function generateRandomTime(maxTime)
 {
@@ -91,23 +100,14 @@ function generateRandomSound()
     const randomSound = readyGoAudio[randomNumber];
     return randomSound;
 }
-
-
+//#endregion
 
 
 function newRound()
 {
-    startButton.textContent = 'WAIT';
-    waitGoDisplay.textContent = "WAIT";
-    waitGoDisplay.classList.remove("red");
-    waitGoDisplay.classList.add("green");
 
-    // Increment Each ROund on each loop
+    countdownButtonState();
     
-
-    // Display current round number
-    roundDisplay.textContent = `Round: ${currentRound}`;
-
     let finalTime;
 
     if (intervalTypeInput.value === "random")
@@ -115,16 +115,16 @@ function newRound()
         // Generate random round time
         const randomWaitTime = generateRandomTime(maxTime);
         finalTime = (randomWaitTime * 1000) + minTime;
+        timeDisplay.textContent = `Time: Random`;
     }
     else if (intervalTypeInput.value === "fixed")
     {
-        console.log("FIXED!!");
         const fixedWaitTime = timeIntervalInput.value;
         finalTime = (fixedWaitTime * 1000) + minTime;
-        console.log(finalTime);
+        timeDisplay.textContent = `Time: ${finalTime / 1000} Seconds`;
     }
 
-    timeDisplay.textContent = `Time: ${finalTime / 1000} Seconds`;
+    
 
     // Proceed based on random time
     setTimeout(() => 
@@ -136,48 +136,86 @@ function newRound()
 function readyGo()
 {
     beep();
-    waitGoDisplay.textContent = "READY GO!";
-    waitGoDisplay.classList.remove("green");
-    waitGoDisplay.classList.add("red");
-    reset();
+    readyGoButtonState();
+
+    setTimeout(() =>
+        {
+            reset();
+        }, 2000);
+    
 }
 
 function beep()
 {
     const sound = generateRandomSound();
     sound.play();
-    startButton.textContent = "START";
-    startButtonClicked = false;
+    
 }
 
-function reset()
+function reset(typeOfReset)
 {   
-    if (currentRound < numOfRounds)
+    
+    waitingButtonState();
+    startButtonClicked = false;
+
+    if (typeOfReset != "hard-reset")
     {
-        setTimeout(() =>
+        if (currentRound < numOfRounds)
         {
             currentRound += 1;
             newRound();
-        }, 1000);
+        }
+        else
+        {
+            currentRound = 1;
+    
+        }
     }
-    else
-    {
-        currentRound = 1;
-        console.log("END");
-    }
+   
 }
 
 
 
-startButton.addEventListener("click", () =>
-{
-    if (!startButtonClicked)
-    {
-        startButtonClicked = true;
-        newRound();
-    }
-});
 
+
+//#endregion Button States
+function waitingButtonState()
+{
+    startButton.classList.add("orange");
+    startButton.classList.remove("red");
+    startButton.classList.remove("blue");
+
+    startButton.textContent = "START";
+}
+
+function countdownButtonState()
+{
+    startButton.textContent = 'WAIT';
+
+    startButton.classList.add("blue");
+    startButton.classList.remove("red");
+    startButton.classList.remove("orange");
+
+    //waitGoDisplay.textContent = "WAIT";
+    //waitGoDisplay.classList.remove("red");
+    //waitGoDisplay.classList.add("green");
+
+    roundDisplay.textContent = `Round: ${currentRound}`;
+}
+
+function readyGoButtonState()
+{
+    startButton.classList.add("red");
+    startButton.classList.remove("blue");
+    startButton.classList.remove("orange");
+
+    startButton.textContent = "READY GO!";
+
+    //waitGoDisplay.textContent = "READY GO!";
+    //waitGoDisplay.classList.remove("green");
+    //waitGoDisplay.classList.add("red");
+}
+//#endregion
 
 
 

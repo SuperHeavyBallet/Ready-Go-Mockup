@@ -43,21 +43,53 @@ body{
     color: white;
     border-bottom: 1px solid white;
     padding-bottom: 3vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-item{
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.8vh;
+    min-width: 250px;
+    max-width: 250px;
+
 }
 
 .display-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: white;
     border-bottom: 1px solid white;
     padding: 3vh;
+}
+.display-area div{
+    padding: 0.2vh;
 }
 
 
 
 .start-button{
-    padding: 8vw;
+
+    min-width: 300px;
+    max-width: 400px;
+    padding: 8vh;
     margin: 3vw;
     font-size: xx-large;
+    font-weight: bolder;
     background-color: orange;
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    
+}
+
+
+.start-button p{
+    text-align: center;
 }
 
 .red{
@@ -68,6 +100,15 @@ body{
 .green{
     background-color: green;
     color: white;
+}
+
+.blue{
+    background-color: blue;
+    color: white;
+}
+
+.orange{
+    background-color: orange;
 }
 
 .hidden{
