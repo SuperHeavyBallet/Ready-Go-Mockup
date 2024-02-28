@@ -1,8 +1,8 @@
 //TODO
 
-- Refactor Interface to be more intuitive
+- // Refactor Interface to be more intuitive
 - Refactor flow to work with interface better
-- Fix CSS
+- // Fix CSS
 - Investigate vocal input
 - Prune voices
 
