@@ -18,64 +18,73 @@
     <div class="ready-go-container">
         <div class="input-area">
 
-      <div class="input-item">
-    <label for="interval-type">Interval Type:</label>
-    <select name="interval-type" class="interval-type" id="interval-type">
-        <option value="fixed">Fixed</option>
-        <option value="random">Random</option>
-    </select>
-</div>
+            <div class="input-item">
+                <label for="call-type">Call Type</label>
+                <select name="call-type" class="call-type" id="call-type">
+                    <option value="go">Go!</option>
+                    <option value="ready-go">Ready Go!</option>
+                </select>
 
-        <div class="input-item">
-        <label for="fixed-time" class="fixed-time-label" id="fixed-time-label">Time Interval:</label>
-        <select name="fixed-time" class="fixed-time" id="fixed-time">
-            <option value="1">3 Seconds</option>
-            <option value="2">4 Seconds</option>
-            <option value="3">5 Seconds</option>
-            <option value="4">6 Seconds</option>
-            <option value="5">7 Seconds</option>
-            <option value="6">8 Seconds</option>
-            <option value="7">9 Seconds</option>
-            <option value="8">10 Seconds</option>
-            <option value="9">11 Seconds</option>
-            <option value="10">12 Seconds</option>
-        </select>
-    </div>
+            </div>
 
-    <div class="input-item">
-    <label for="round-number">Number of Rounds:</label>
-    <select name="round-number" id="round-number" class="round-number">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-</div>
+            <div class="input-item">
+                <label for="interval-type">Interval Type:</label>
+                <select name="interval-type" class="interval-type" id="interval-type">
+                    <option value="fixed">Fixed</option>
+                    <option value="random">Random</option>
+                </select>
+            </div>
 
-    </div>
+            <div class="input-item">
+                <label for="fixed-time" class="fixed-time-label" id="fixed-time-label">Time Interval:</label>
+                <select name="fixed-time" class="fixed-time" id="fixed-time">
+                <option value="1">3 Seconds</option>
+                    <option value="2">4 Seconds</option>
+                    <option value="3">5 Seconds</option>
+                    <option value="4">6 Seconds</option>
+                    <option value="5">7 Seconds</option>
+                    <option value="6">8 Seconds</option>
+                    <option value="7">9 Seconds</option>
+                    <option value="8">10 Seconds</option>
+                    <option value="9">11 Seconds</option>
+                    <option value="10">12 Seconds</option>
+                </select>
+            </div>
+
+            <div class="input-item">
+                <label for="round-number">Number of Rounds:</label>
+                <select name="round-number" id="round-number" class="round-number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+        </div>
 
     <div class="display-area">
-   <div class="selected-num-of-rounds" id="selected-num-of-rounds">Rounds: 1</div>
+        <div class="call-type-display" id="call-type-display"> Call Type: Go!</div>
+        
+        <div class="selected-num-of-rounds" id="selected-num-of-rounds">Rounds: 1</div>
 
-   
+        <div id="time-display" class="time-display">Time: 0 Seconds</div>
+        
+        <div id="round-display" class="round-display">Round: 0</div>
 
-    <div id="time-display" class="time-display">Time: 0 Seconds</div>
-   <div id="round-display" class="round-display">Round: 0</div>
-   <!--
-    <div id="wait-go" class="wait-go">WAIT</div>
-   -->
+        <button id="start-button" class="start-button">
+            <p>START</p>
+        </button>
+    <div>
 
-   <button id="start-button" class="start-button">
-    <p>START</p>
-</button>
-<div>
     <p id="click-prompt">Click To Start</p>
+    
 </div>
 </div>
 </div>

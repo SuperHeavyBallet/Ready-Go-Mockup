@@ -1,3 +1,7 @@
+const callTypeInput = document.getElementById("call-type");
+const callTypeDisplay = document.getElementById("call-type-display");
+let callType = "go";
+
 const intervalTypeInput = document.getElementById("interval-type");
 const timeIntervalLabel = document.getElementById("fixed-time-label")
 const timeIntervalInput = document.getElementById("fixed-time");
@@ -51,7 +55,50 @@ const readyGoAudio = [
 ];
 //#endregion
 
+//#region Go Audio Clips
+
+const go00 = new Audio("audio/Go/Go_00.mp3");
+const go01 = new Audio("audio/Go/Go_01.mp3");
+const go02 = new Audio("audio/Go/Go_02.mp3");
+const go03 = new Audio("audio/Go/Go_03.mp3");
+const go04 = new Audio("audio/Go/Go_04.mp3");
+const go05 = new Audio("audio/Go/Go_05.mp3");
+const go06 = new Audio("audio/Go/Go_06.mp3");
+const go07 = new Audio("audio/Go/Go_07.mp3");
+const go08 = new Audio("audio/Go/Go_08.mp3");
+const go09 = new Audio("audio/Go/Go_09.mp3");
+
+const goAudio = [
+    go00,
+    go01,
+    go02,
+    go03,
+    go04,
+    go05,
+    go06,
+    go07,
+    go08,
+    go09
+]
+
+//#endregion
+
 //#region Event Listeners
+callTypeInput.addEventListener('change', function()
+{
+    callType = this.value;
+    if (callType === 'go')
+    {
+        callTypeDisplay.textContent = "Call Type: Go!"
+    }
+    else if (callType === "ready-go")
+    {
+        callTypeDisplay.textContent = "Call Type: Ready Go!"
+    }
+    console.log(callType);
+})
+
+
 intervalTypeInput.addEventListener('change', function()
 {
     reset("hard-reset");
@@ -98,9 +145,20 @@ function generateRandomTime(maxTime)
 
 function generateRandomSound()
 {
-    const randomNumber = Math.floor(Math.random() * readyGoAudio.length);
-    const randomSound = readyGoAudio[randomNumber];
-    return randomSound;
+    if (callType === "go")
+    {
+        const randomNumber = Math.floor(Math.random() * goAudio.length);
+        const randomSound = goAudio[randomNumber];
+        return randomSound;
+    }
+    else if (callType === "ready-go")
+    {
+        const randomNumber = Math.floor(Math.random() * readyGoAudio.length);
+        const randomSound = readyGoAudio[randomNumber];
+        return randomSound;
+    }
+
+    
 }
 //#endregion
 
@@ -215,11 +273,15 @@ function readyGoButtonState()
     startButton.classList.remove("blue");
     startButton.classList.remove("orange");
 
-    startButton.textContent = "READY GO!";
-
-    //waitGoDisplay.textContent = "READY GO!";
-    //waitGoDisplay.classList.remove("green");
-    //waitGoDisplay.classList.add("red");
+    if (callType === 'go')
+    {
+        startButton.textContent = "GO!";
+    }
+    else if (callType === 'ready-go')
+    {
+        startButton.textContent = "READY GO!";
+    }
+    
 }
 //#endregion
 
